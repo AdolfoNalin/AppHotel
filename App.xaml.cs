@@ -1,5 +1,4 @@
-﻿using AppHotel.View;
-using Microsoft.Extensions.DependencyInjection;
+﻿using AppHotel.Views;
 
 namespace AppHotel
 {
@@ -8,7 +7,7 @@ namespace AppHotel
         public App()
         {
             InitializeComponent();
-            MainPage = new Menu();
+            MainPage = new NavigationPage(new HiringMenu());
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

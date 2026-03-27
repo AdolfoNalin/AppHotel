@@ -75,7 +75,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="View\Menu.xaml">
+	  <Compile Update="Views\EndHIring.xaml.cs">
+	    <DependentUpon>EndHiring.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\EndHiring.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\HiringMenu.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

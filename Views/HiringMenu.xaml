@@ -4,6 +4,7 @@
              x:Class="AppHotel.Views.HiringMenu"
              Title="Menu"
              NavigationPage.HasNavigationBar="False">
+
     <VerticalStackLayout
         VerticalOptions="CenterAndExpand"
         Padding="10"
@@ -14,7 +15,14 @@
             FontSize="50"
             HorizontalOptions="Center"/>
 
-        <Frame>
+        <Border 
+            BackgroundColor="Black"
+            Padding="10"
+            Stroke="Transparent">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+            
             <VerticalStackLayout>
                 <Grid
                     RowDefinitions="Auto,Auto"
@@ -23,7 +31,7 @@
                     <Label
                         Grid.Row="0"
                         Grid.Column="0"
-                        Text="Adultos"/>
+                        Text="Adultos: "/>
 
                     <Stepper 
                         Grid.Row="0"
@@ -41,7 +49,7 @@
                     <Label
                          Grid.Row="1"
                          Grid.Column="0"
-                         Text="Crianças"/>
+                         Text="Criança: "/>
 
                     <Label
                         Grid.Row="1"
@@ -54,7 +62,7 @@
                         Grid.Column="2"
                         x:Name="sptKids"
                         Minimum="0"
-                        Maximum="10"/>      
+                        Maximum="10"/>
                 </Grid>
 
                 <Label
@@ -68,38 +76,51 @@
                 <Picker
                     x:Name="pckRoom"
                     Title="Selecione sua Acomodação"
-                    FontSize="15"/>
+                    FontSize="15"
+                    ItemsSource="{Binding accommodations}"
+                    ItemDisplayBinding="{Binding Description}"/>
 
-                <Frame>
+                <Border
+                    Stroke="Transparent"
+                    Padding="10"
+                    BackgroundColor="Black">
+
                     <VerticalStackLayout>
                         <Label 
                             Text="Período da Estadia"
                             HorizontalOptions="Center"
                             FontFamily="CaveatBold"
                             FontSize="20"/>
-                        
-                        <HorizontalStackLayout>
+
+                        <HorizontalStackLayout
+                            HorizontalOptions="CenterAndExpand">
                             <Label 
-                                Text="Check-in:"/>
+                                Text="Check-in:"
+                                VerticalTextAlignment="Center"/>
                             <DatePicker
                                 x:Name="dpStartDate"
-                                Format="dd/MM/yyyy"/>
+                                Format="dd/MM/yyyy"
+                                DateSelected="dpStartDate_DateSelected"/>
                         </HorizontalStackLayout>
 
-                        <HorizontalStackLayout>
+                        <HorizontalStackLayout
+                            HorizontalOptions="CenterAndExpand">
                             <Label 
-                                Text="Check-out:"/>
+                                Text="Check-out:"
+                                VerticalTextAlignment="Center"/>
                             <DatePicker
                                  x:Name="dpEndDate"
-                                 Format="dd/MM/yyyy"/>  
-                            
+                                 Format="dd/MM/yyyy"/>
+
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
-                </Frame>
-
+                </Border>
+                
                 <Button 
-                    Text="Continuar"/>
+                    Text="Continuar"
+                    Clicked="Calculation"
+                    HorizontalOptions="Center"/>
             </VerticalStackLayout>
-        </Frame>
+        </Border>
     </VerticalStackLayout>
 </ContentPage>

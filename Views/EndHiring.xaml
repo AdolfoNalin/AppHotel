@@ -2,11 +2,118 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppHotel.Views.EndHIring"
-             Title="EndHiring">
-    <VerticalStackLayout>
+             NavigationPage.HasNavigationBar="False">
+    <VerticalStackLayout
+        VerticalOptions="Center">
+
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            Text="{Binding Description}"
+            FontFamily="CaveatBold"
+            HorizontalOptions="Center"
+            FontSize="30"
+            Padding="10"/>
+        <Border
+            Margin="10"
+            BackgroundColor="Black"
+            Padding="10">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+
+            <StackLayout
+                Margin="10"
+                Orientation="Horizontal">
+                <HorizontalStackLayout 
+                    HorizontalOptions="CenterAndExpand">
+                    <Label
+                        Text="Adultos: "/>
+
+                    <Label 
+                        x:Name="lblAmountAdult"
+                        Text="{Binding AmountAdult}"/>
+                    
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout
+                    HorizontalOptions="CenterAndExpand">
+                    <Label
+                        Text="Crianças: "/>
+
+                    <Label 
+                        Text="{Binding AmountKids}"/>
+                </HorizontalStackLayout>
+
+            </StackLayout>
+        </Border>
+
+        <Border 
+            Margin="10"
+            Padding="20">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+            
+            <Grid 
+                ColumnDefinitions="*, *, *"
+                RowDefinitions="Auto, Auto">
+
+                <Label
+                    Text="Check-in"
+                    Grid.Row="0"
+                    Grid.Column="0"/>
+                <Label
+                    Text="Check-out"
+                    Grid.Row="0"
+                    Grid.Column="1"/>
+                <Label
+                    Text="Estadia"
+                    Grid.Row="0"
+                    Grid.Column="2"/>
+                
+                <Label
+                    Text="{Binding StartDate, StringFormat='{0:dd/MM/yyyy}'}"
+                    Grid.Row="01"
+                    Grid.Column="0"/>
+                <Label
+                    Text="{Binding EndDate, StringFormat='{0:dd/MM/yyyy}'}"
+                    Grid.Row="1"
+                    Grid.Column="1"/>
+                <Label
+                    Text="{Binding Stay}"
+                    Grid.Row="1"
+                    Grid.Column="2"/>
+            </Grid>
+        </Border>
+
+        <Border
+            Padding="10"
+            Margin="10">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+            <HorizontalStackLayout
+                HorizontalOptions="CenterAndExpand">
+                
+                <Label
+                    Text="Valor total: "
+                    HorizontalOptions="Center"
+                    FontFamily="CaveatBold"
+                    FontSize="Large"/>
+
+                <Label
+                    HorizontalOptions="Center"
+                    FontFamily="CaveatBold"
+                    FontSize="Large"
+                    VerticalOptions="Center"
+                    Text="{Binding TotalPrice, StringFormat='{}{0:c}'}"/>
+            </HorizontalStackLayout>
+        </Border>
+
+        <Button
+            Text="Voltar"
+            HorizontalOptions="Center"
+            Clicked="GoBack_Click"/>
     </VerticalStackLayout>
 </ContentPage>
